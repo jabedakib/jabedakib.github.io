@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Akib Jabed — Academic CV</title>
+  <meta name="description" content="Academic profile of Akib Jabed — Ph.D. candidate in Physics (INRS & University of Bordeaux). TR‑ARPES, ultrafast optics, quantum materials." />
+  <!-- Tailwind CSS for modern styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Custom fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:wght@300;700&display=swap');
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .merriweather {
+        font-family: 'Merriweather', serif;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      width: 0.25rem;
+      background-color: #21303a;
+      border-radius: 9999px;
+    }
+  </style>
+  <script>
+    // Tailwind configuration with custom colors to match the original design
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'bg': '#0a0d11',
+            'bg-2': '#12161b',
+            'text-primary': '#e7edf5',
+            'muted': '#c6d0dd',
+            'accent': '#15755b',
+            'accent-2': '#b07f24',
+            'card': '#10151a',
+            'border': '#21303a',
+          }
+        }
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Akib Jabed",
+    "jobTitle": "Ph.D. Candidate in Physics",
+    "affiliation": [
+      {"@type": "Organization", "name": "INRS"},
+      {"@type": "Organization", "name": "University of Bordeaux"}
+    ],
+    "email": "mailto:jabed.akib.iitd@gmail.com",
+    "url": "https://your-github-username.github.io/",
+    "sameAs": ["https://www.linkedin.com/in/akib-jabed-physics"]
+  }
+  </script>
+</head>
+<body class="bg-bg text-text-primary leading-relaxed">
+<header class="sticky top-0 z-50 backdrop-blur-md bg-bg/70 border-b border-border transition-colors duration-300">
+  <div class="max-w-[1100px] mx-auto px-7 py-4 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-full border-2 border-accent-2 bg-gradient-to-br from-accent to-accent-2 grid place-items-center font-extrabold text-white">AJ</div>
+      <h1 class="text-lg font-semibold">Akib Jabed</h1>
+    </div>
+    <nav class="flex gap-4 flex-wrap text-sm md:text-base">
+      <a href="#about" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200">About</a>
+      <a href="#education" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200">Education</a>
+      <a href="#research" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200">Research</a>
+      <a href="#publications" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200">Publications</a>
+      <a href="#talks" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200">Talks</a>
+      <a href="#skills" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200">Skills</a>
+      <a href="#contact" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200">Contact</a>
+    </nav>
+    <!-- Dark Mode Toggle -->
+    <button id="theme-toggle" class="p-2 rounded-full text-text-primary hover:bg-card transition-all duration-200">
+      <i id="theme-icon" class="fa-solid fa-sun"></i>
+    </button>
+  </div>
+</header>
+
+<main class="max-w-[1100px] mx-auto px-7 py-7">
+  <!-- Hero Section -->
+  <section class="grid md:grid-cols-2 lg:grid-cols-[1.2fr_.8fr] gap-7 py-7 pb-2">
+    <div>
+      <span class="inline-flex items-center gap-2 border border-border px-3 py-1 rounded-full text-sm bg-bg-2">Ph.D. candidate · INRS & University of Bordeaux</span>
+      <h2 class="merriweather text-3xl sm:text-4xl lg:text-5xl leading-tight my-4">Ultrafast Dynamics · TR‑ARPES · Quantum Materials</h2>
+      <p class="text-muted mb-2 text-base md:text-lg">Experimental physicist specializing in ARPES/XPS‑class surface‑sensitive characterization under UHV/cryogenic conditions. Designing and operating advanced pump–probe experiments; analyzing large datasets in Python/MATLAB/Igor. Current work: defect/contamination–driven ultrafast phenomena in 2D semiconductors.</p>
+      <div class="flex gap-3 flex-wrap mt-5">
+        <a class="px-4 py-2 rounded-xl text-white font-semibold bg-gradient-to-br from-accent to-accent-2 hover:brightness-110 transition-all duration-200" href="CV/AJabed_CV_Postdoc.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        <a class="px-4 py-2 rounded-xl text-text-primary font-semibold border border-border bg-card hover:brightness-110 transition-all duration-200" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-xl">
+      <div class="flex flex-wrap gap-2">
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">TR‑ARPES</span>
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">Ultrafast Optics</span>
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">HHG</span>
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">OPA/DFG</span>
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">UHV · Cryo (5 K)</span>
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">Python</span>
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">MATLAB</span>
+        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm">Igor Pro</span>
+      </div>
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <strong class="font-semibold">Affiliations</strong>
+          <ul class="list-none m-0 p-0 text-sm">
+            <li class="mt-1">INRS — EMT Centre (Canada)</li>
+            <li class="mt-1">University of Bordeaux — CELIA (France)</li>
+          </ul>
+        </div>
+        <div>
+          <strong class="font-semibold">Focus Areas</strong>
+          <ul class="list-none m-0 p-0 text-sm">
+            <li class="mt-1">Topological insulators ($Bi_2Te_3$)</li>
+            <li class="mt-1">2D TMDCs ($1T-SnS_2$)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">About</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <p>Ph.D. researcher investigating ultrafast carrier dynamics and electronic structure of quantum materials using time‑ and angle‑resolved photoemission spectroscopy (TR‑ARPES). I operate both hemispherical analyzers and momentum microscopes; develop data pipelines; and collaborate across international teams on Floquet–Blooch engineering, CDW dynamics, and superconductivity.</p>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Education</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div class="bg-card border border-border rounded-xl p-4 overflow-x-auto">
+      <table class="w-full text-left table-auto border-collapse">
+        <thead>
+          <tr class="text-sm text-muted">
+            <th class="p-2 border-b border-border">Degree</th>
+            <th class="p-2 border-b border-border">Institution</th>
+            <th class="p-2 border-b border-border">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="p-2">Ph.D. in Energy & Materials Science</td>
+            <td class="p-2">INRS, Canada & University of Bordeaux, France</td>
+            <td class="p-2">2026 (expected)</td>
+          </tr>
+          <tr>
+            <td class="p-2">M.Tech. in Applied Optics</td>
+            <td class="p-2">Indian Institute of Technology Delhi, India</td>
+            <td class="p-2">2022</td>
+          </tr>
+          <tr>
+            <td class="p-2">M.Sc. in Physics</td>
+            <td class="p-2">Presidency University, Kolkata, India</td>
+            <td class="p-2">2019</td>
+          </tr>
+          <tr>
+            <td class="p-2">B.Sc. in Physics</td>
+            <td class="p-2">University of Kalyani, India</td>
+            <td class="p-2">2017</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Research Experience</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div class="relative timeline">
+      <div class="relative pl-8 mb-4">
+        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
+        <h3 class="text-lg font-semibold mb-0">Ph.D. Researcher — INRS (Canada) / University of Bordeaux (France) <span class="text-muted text-sm ml-2">Feb 2023 — Present</span></h3>
+        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
+          <li><strong>Control of intervalley scattering in $Bi_2Te_3$ via temperature‑dependent band renormalization:</strong> We demonstrate that electron-phonon-mediated intervalley scattering plays a pivotal role in determining its electron dynamics and is highly sensitive to subtle variations in the bulk band dispersion.</li>
+          <li><strong>Role of defect states in semiconducting $1T-SnS_2$:</strong> We provide fundamental insights into how in-gap states influence the optical properties and ultrafast carrier dynamics of $1T-SnS_2$ based on advanced TR-ARPES measurements.</li>
+          <li><strong>Floquet-Bloch Engineering in 2D Materials:</strong> Investigating the transient generation of Floquet-Bloch states in $Bi_2Te_3$ via MIR pump pulses and their momentum warping implications.</li>
+          <li><strong>Charge-density-wave fluctuations in $TiSe_2$:</strong> Probing the dynamics of charge density waves to understand their effect on electronic properties.</li>
+          <li><strong>Unconventional marriage between high-temperature superconductivity and pseudogap in cuprates:</strong> Investigating hybridization between the main anti-bonding band and its first-order superstructure replica.</li>
+        </ul>
+      </div>
+      <div class="relative pl-8 mb-4">
+        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
+        <h3 class="text-lg font-semibold mb-0">M.Tech Thesis — IIT Delhi <span class="text-muted text-sm ml-2">Aug 2021 — Jun 2022</span></h3>
+        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
+          <li><strong>Second Harmonic Generation from Artificial Atoms and Lattices:</strong> Investigated nonlinear optical phenomena in artificial lattices using femtosecond lasers. Conducted simulations with Lumerical and COMSOL; developed metamaterial using sputtering and electron beam lithography techniques.</li>
+        </ul>
+      </div>
+      <div class="relative pl-8 mb-4">
+        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
+        <h3 class="text-lg font-semibold mb-0">M.Sc Thesis — Presidency University, Kolkata <span class="text-muted text-sm ml-2">Aug 2018 — Aug 2019</span></h3>
+        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
+          <li><strong>Study The Physics of Blazar Using Optical and Gamma ray Outbursts:</strong> Analyzed and modeled outburst characteristics and radiation mechanisms in blazars using C, Gnuplot, and Qtiplot.</li>
+        </ul>
+      </div>
+      <div class="relative pl-8 mb-4">
+        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
+        <h3 class="text-lg font-semibold mb-0">Minor Projects <span class="text-muted text-sm ml-2">IIT Delhi (2021) & Presidency University (2019)</span></h3>
+        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
+          <li>Fabry Perot Interferometer design with Zemax OpticStudio.</li>
+          <li>A Stable Dual Wavelength Thulium Doped Fiber Laser at 1.9 mm using Photonic Crystal Fiber.</li>
+          <li>Attosecond Pulse Generation via High Harmonic Generation Process.</li>
+          <li>Many Electron Zeeman and Stark effect.</li>
+          <li>Characterizing Radio Antennae.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section id="publications" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Publications & Preprints</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div id="pubs"></div>
+  </section>
+
+  <!-- Talks & Conferences Section -->
+  <section id="talks" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Talks & Conferences</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="text-base font-semibold mb-1">GDR UP</h3>
+        <div class="text-muted text-sm">Paris · Mar 2025</div>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="text-base font-semibold mb-1">LIGHT S&T</h3>
+        <div class="text-muted text-sm">Bordeaux · 2025</div>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="text-base font-semibold mb-1">GPR LIGHT Thrust 1</h3>
+        <div class="text-muted text-sm">Bordeaux · Dec 2024</div>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="text-base font-semibold mb-1">ESD7</h3>
+        <div class="text-muted text-sm">Paris · Nov 2024</div>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="text-base font-semibold mb-1">Montréal Photonics</h3>
+        <div class="text-muted text-sm">Canada · Nov 2023</div>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="text-base font-semibold mb-1">ALLS Workshop</h3>
+        <div class="text-muted text-sm">Canada · Sep 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Technical Skills</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-2">Characterization</h3>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">TR/Polarization‑resolved ARPES</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">XPS</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">AFM</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Raman</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">UV–Vis–NIR</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">SEM/TEM</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">PL</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Ellipsometry</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">FTIR</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">XRD</div>
+        </div>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-2">Surface/Vacuum & Optics</h3>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">UHV 10⁻¹¹ mbar</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">In‑situ cleaving</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Ar‑ion sputtering</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Cryostats (5 K)</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Femtosecond lasers</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">HHG (XUV)</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">OPA/DFG (MIR)</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Nonlinear optics</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-2">Data & Simulation</h3>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Igor Pro</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">MATLAB</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Python</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">C</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Ansys Lumerical</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Comsol</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Gnuplot</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Qtiplot</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Zemax OpticStudio</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">LaTeX</div>
+        </div>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-2">Interpersonal & Research</h3>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Scientific Writing</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">DOE & SOPs</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Problem-solving</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Critical Thinking</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">International Collaboration</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Oral Presentations</div>
+          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2">Leadership</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Development Section -->
+  <section class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Professional Development</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+      <p class="mb-3"><strong>Workshops:</strong> 1) Electron and Spin Dynamics 7th Workshop (France, 2024) · 2) Advanced Material Characterization Workshop (Canada, 2024) · 3) INUP‑i2i Nanotechnology Program (India, 2022)</p>
+      <p class="text-sm text-muted"><em>Outcome:</em> Theory sessions with related results for ARPES, RIXS, and DFT; theory+demo for XRD, XPS, TEM, SEM, Raman, AFM, UV–Vis–NIR, PL; intro training in sputtering, CVD, lithography, scanning probe, spectroscopy.</p>
+      <p class="mt-3 mb-3"><strong>Summer Projects/Schools:</strong> 1) Femto‑UP (France, 2021) · 2) Photonics Days Jena (Germany, 2021) · 3) THz Antenna with Metamaterial (India, 2021)</p>
+      <p class="text-sm text-muted"><em>Outcome:</em> Short applied sessions in THz generation/detection (THz‑TDS); ultrafast laser applications; Python for data; and current photonics trends.</p>
+    </div>
+  </section>
+  
+  <!-- Achievements and Activities Section -->
+  <section id="achievements" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Achievements & Activities</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-2">Awards & Honors</h3>
+        <ul class="list-disc ml-5 text-sm space-y-1">
+          <li>State Eligibility Test 2020 (Qualified among only 7% of 66,000 candidates nationwide)</li>
+          <li>Joint Entrance Screening Test 2020 (Secured qualification in the top 5% of 13,500 nationwide)</li>
+          <li>Graduate Aptitude Test in Engineering 2020 (Qualified within the top 16% of 17,000 candidates nationwide)</li>
+          <li>Swami Vivekananda Merit Cum Means Scholarship (2012-2019)</li>
+          <li>Institute Teaching Assistantship at IIT Delhi</li>
+        </ul>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-2">Extracurricular Activities</h3>
+        <ul class="list-disc ml-5 text-sm space-y-1">
+          <li>Developed various websites on Github (laser fluence calculator, autonomous AI agent, etc.)</li>
+          <li>Published technical, scientific, and social commentary articles on Medium.</li>
+          <li>Organized the LIGHT S&T Annual Student Conference (2025) in France.</li>
+          <li>Co-led a student initiative to establish a student canteen at INRS, Canada.</li>
+          <li>Collected funds for COVID-19 relief in India.</li>
+          <li>Organized departmental events and volunteered for school events.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="mt-7">
+    <h2 class="merriweather text-2xl font-semibold mb-3">Contact</h2>
+    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm"></div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-1">Email</h3>
+        <a class="flex items-center gap-2 text-accent hover:underline transition-all duration-200" href="mailto:jabed.akib.iitd@gmail.com">
+          <i class="fa-solid fa-envelope"></i>
+          jabed.akib.iitd@gmail.com
+        </a>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-1">Phone</h3>
+        <a class="flex items-center gap-2 text-accent hover:underline transition-all duration-200" href="tel:+33769596085">
+          <i class="fa-solid fa-phone"></i>
+          +33 7 69 59 60 85
+        </a>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+        <h3 class="font-semibold text-lg mb-1">LinkedIn</h3>
+        <a class="flex items-center gap-2 text-accent hover:underline transition-all duration-200" target="_blank" rel="noopener" href="https://www.linkedin.com/in/akib-jabed-physics">
+          <i class="fa-brands fa-linkedin"></i>
+          linkedin.com/in/akib-jabed-physics
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="mt-10 text-center text-sm text-muted">
+      &copy; <span id="y"></span> · Designed by Akib Jabed · Colors: #0e6e55 & #a16f0b
+    </p>
+  </footer>
+</main>
+
+<script>
+  // Get the element to display the current year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Publications (editable JSON)
+  const publications = [
+    {
+      title: 'Control of intervalley scattering in $Bi_2Te_3$ via temperature-dependent band renormalization',
+      role: 'Submitted (first‑author) — npj Quantum Materials',
+      link: 'https://arxiv.org/abs/2506.03251'
+    },
+    {
+      title: 'Electron-phonon-dominated charge-density-wave fluctuations in $TiSe_2$ accessed by ultrafast nonequilibrium dynamics',
+      role: 'Submitted (co‑author) — Nature Communications',
+      link: 'https://arxiv.org/abs/2507.12430'
+    }
+  ];
+
+  // Dynamically create and append publication elements
+  const mount = document.getElementById('pubs');
+  publications.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'py-2 transition-all duration-300 hover:scale-[1.01]';
+    el.innerHTML = `
+      <a href="${p.link}" target="_blank" rel="noopener" class="block font-semibold text-accent hover:underline transition-all duration-200">${p.title}</a>
+      <div class="text-muted text-sm">${p.role}</div>
+    `;
+    mount.appendChild(el);
+  });
+
+  // Dark/Light Mode Toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+
+  themeToggle.addEventListener('click', () => {
+    // Toggle the 'dark' class on the root HTML element
+    htmlElement.classList.toggle('dark');
+
+    // Update the icon based on the new class state
+    const isDarkMode = htmlElement.classList.contains('dark');
+    const icon = themeToggle.querySelector('i');
+    if (isDarkMode) {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    } else {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  });
+
+  // Set the initial icon state on page load
+  const initialIsDarkMode = htmlElement.classList.contains('dark');
+  const initialIcon = themeToggle.querySelector('i');
+  if (initialIsDarkMode) {
+    initialIcon.classList.remove('fa-sun');
+    initialIcon.classList.add('fa-moon');
+  } else {
+    initialIcon.classList.remove('fa-moon');
+    initialIcon.classList.add('fa-sun');
+  }
+</script>
+</body>
+</html>
