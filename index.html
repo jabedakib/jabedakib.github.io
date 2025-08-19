@@ -1,71 +1,727 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Akib Jabed — Academic CV</title>
   <meta name="description" content="Academic profile of Akib Jabed — Ph.D. candidate in Physics (INRS & University of Bordeaux). TR‑ARPES, ultrafast optics, quantum materials." />
-  <!-- Tailwind CSS for modern styling -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Font assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Custom fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:wght@300;700&display=swap');
+    /* CSS Variables for a clean, maintainable theme */
+    :root{
+      --bg:#0a0b0f; 
+      --bg2:#12151c; 
+      --bg3:#1a1f2b;
+      --text:#e7edf7; 
+      --muted:#a8b3c3;
+      --accent:#0d8b6b; 
+      --accent-2:#b8860b; 
+      --accent-glow:#0d8b6b33;
+      --card:#0f1419; 
+      --card-hover:#151c24;
+      --border:#1f2937;
+      --border-light:#2d3748;
+      --shadow:#00000040;
+      --glow:#0d8b6b20;
+    }
+    
+    @media (prefers-color-scheme: light){
+      :root{ 
+        --bg:#ffffff; 
+        --bg2:#f8fafc; 
+        --bg3:#f1f5f9;
+        --text:#0f172a; 
+        --muted:#475569; 
+        --card:#ffffff; 
+        --card-hover:#f8fafc;
+        --border:#e2e8f0; 
+        --border-light:#cbd5e1;
+        --shadow:#0000001a;
+        --glow:#0d8b6b10;
+        --accent-glow:#0d8b6b15;
+      }
+    }
+    
+    /* Global styles and animations */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-        font-family: 'Inter', sans-serif;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
     }
-    .merriweather {
-        font-family: 'Merriweather', serif;
+    
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, var(--accent-glow) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--accent-glow) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, var(--accent-glow) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.3;
+      animation: backgroundShift 20s ease-in-out infinite;
     }
-    /* Timeline styles, now responsive to dark mode */
+    
+    @keyframes backgroundShift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-20px, -10px) scale(1.1); }
+      66% { transform: translate(10px, -20px) scale(0.9); }
+    }
+    
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--accent-2);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 4px;
+    }
+    
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+    
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 11, 15, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    
+    .header-glow {
+      box-shadow: 0 0 40px var(--glow);
+    }
+    
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .brand:hover {
+      transform: scale(1.05);
+    }
+    
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-2);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      animation: avatarGlow 3s ease-in-out infinite;
+    }
+    
+    .avatar::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 2s linear infinite;
+    }
+    
+    @keyframes avatarGlow {
+      0%, 100% { box-shadow: 0 0 20px var(--accent-glow); }
+      50% { box-shadow: 0 0 30px var(--accent-glow), 0 0 40px var(--accent-glow); }
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .brand h1 {
+      font-size: 1.25rem;
+      margin: 0;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    
+    nav a {
+      color: var(--muted);
+      opacity: 0.9;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--glow), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover, nav a.active {
+      color: var(--text);
+      background: var(--bg3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+    
+    main { padding-top: 100px; }
+    
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 40px;
+      padding: 40px 0;
+      min-height: 70vh;
+      align-items: center;
+    }
+    
+    .hero > div:first-child { animation: slideInLeft 0.8s ease-out; }
+    .hero > div:last-child { animation: slideInRight 0.8s ease-out; }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-light);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: var(--bg2);
+      backdrop-filter: blur(10px);
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--glow), transparent);
+      animation: pillGlow 3s linear infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    @keyframes pillGlow {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    
+    .title {
+      font-family: Merriweather, serif;
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin: 0.5rem 0 1rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleGlow 4s ease-in-out infinite;
+    }
+    
+    @keyframes titleGlow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.2); }
+    }
+    
+    .subtitle {
+      color: var(--muted);
+      margin: 0.5rem 0 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    
+    .cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    
+    .btn {
+      border: 1px solid var(--border-light);
+      background: var(--card);
+      padding: 14px 28px;
+      border-radius: 16px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px var(--shadow);
+    }
+    
+    .btn.acc {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      color: white;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    
+    .btn.acc:hover {
+      box-shadow: 0 8px 40px var(--accent-glow);
+      transform: translateY(-3px) scale(1.05);
+    }
+    
+    /* Panels and Cards */
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+      opacity: 0.5;
+    }
+    
+    .panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px var(--shadow);
+      border-color: var(--border-light);
+    }
+    
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .badge {
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 16px;
+      background: var(--bg2);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .badge:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 5px 20px var(--shadow);
+    }
+    
+    .badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--glow), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .badge:hover::before {
+      left: 100%;
+    }
+    
+    /* Sections */
+    section {
+      margin: 80px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h2.section {
+      font-family: Merriweather, serif;
+      margin: 0 0 16px;
+      font-size: 2rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .rule {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.8;
+      margin: 8px 0 32px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .rule::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: ruleShine 3s linear infinite;
+    }
+    
+    @keyframes ruleShine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px var(--shadow);
+      border-color: var(--border-light);
+      background: var(--card-hover);
+    }
+    
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    
     .timeline::before {
       content: '';
       position: absolute;
-      left: 1rem;
+      left: 20px;
       top: 0;
       bottom: 0;
-      width: 0.25rem;
-      background-color: #21303a;
-      border-radius: 9999px;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      border-radius: 2px;
     }
-    html.dark .timeline::before {
-      background-color: #21303a;
+    
+    .t-item {
+      position: relative;
+      padding: 20px 0;
+      margin-left: 20px;
     }
-    html:not(.dark) .timeline::before {
-      background-color: #e0e0e0;
+    
+    .t-item::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 24px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 20px var(--accent-glow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    
+    ul.clean {
+      margin: 12px 0 0 20px;
+      list-style: none;
+      padding: 0;
+    }
+    
+    ul.clean li {
+      margin: 8px 0;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    ul.clean li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .pub {
+      margin: 16px 0;
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .pub:hover {
+      transform: translateX(8px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px var(--shadow);
+    }
+    
+    .pub a {
+      font-weight: 600;
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+    
+    /* Chips */
+    .chip {
+      display: inline-block;
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: var(--bg2);
+      font-size: 0.85rem;
+      margin: 4px 8px 4px 0;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    
+    .chip:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+    
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 101;
+      transition: width 0.3s ease;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 30px var(--accent-glow);
+    }
+    
+    footer {
+      margin: 80px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+      border-radius: 24px;
+    }
+    
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .wrap { padding: 20px; }
+      .topbar { padding: 12px 20px; flex-direction: column; gap: 16px; }
+      .hero { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+      .title { font-size: 2.2rem; }
+      .two { grid-template-columns: 1fr; }
+      nav { justify-content: center; }
+      .cards { grid-template-columns: 1fr; }
+      .back-to-top { bottom: 20px; right: 20px; }
+    }
+    
+    @media (max-width: 480px) {
+      .title { font-size: 1.8rem; }
+      .btn { padding: 12px 20px; font-size: 0.9rem; }
+      .panel { padding: 20px; }
+      .card { padding: 20px; }
     }
   </style>
-  <script>
-    // Tailwind configuration with custom colors to match the original design
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            // Dark mode colors
-            'bg': '#0a0d11',
-            'bg-2': '#12161b',
-            'text-primary': '#e7edf5',
-            'muted': '#c6d0dd',
-            'accent': '#15755b',
-            'accent-2': '#b07f24',
-            'card': '#10151a',
-            'border': '#21303a',
-            // Light mode colors (added for the toggle to work)
-            'light-bg': '#f8fafc',
-            'light-bg-2': '#e2e8f0',
-            'light-text-primary': '#1e293b',
-            'light-muted': '#475569',
-            'light-accent': '#0f766e',
-            'light-accent-2': '#f59e0b',
-            'light-card': '#ffffff',
-            'light-border': '#e5e7eb',
-          }
-        }
-      }
-    }
-  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -82,402 +738,413 @@
   }
   </script>
 </head>
-<body class="bg-bg text-text-primary leading-relaxed dark:bg-light-bg dark:text-light-text-primary">
-<header class="sticky top-0 z-50 backdrop-blur-md bg-bg/70 border-b border-border transition-colors duration-300 dark:bg-light-bg/70 dark:border-light-border">
-  <div class="max-w-[1100px] mx-auto px-7 py-4 flex items-center justify-between gap-4">
-    <div class="flex items-center gap-3">
-      <div class="w-11 h-11 rounded-full border-2 border-accent-2 bg-gradient-to-br from-accent to-accent-2 grid place-items-center font-extrabold text-white">AJ</div>
-      <h1 class="text-lg font-semibold">Akib Jabed</h1>
-    </div>
-    <nav class="flex gap-4 flex-wrap text-sm md:text-base">
-      <a href="#about" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200 dark:text-light-text-primary dark:hover:text-black">About</a>
-      <a href="#education" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200 dark:text-light-text-primary dark:hover:text-black">Education</a>
-      <a href="#research" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200 dark:text-light-text-primary dark:hover:text-black">Research</a>
-      <a href="#publications" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200 dark:text-light-text-primary dark:hover:text-black">Publications</a>
-      <a href="#talks" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200 dark:text-light-text-primary dark:hover:text-black">Talks</a>
-      <a href="#skills" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200 dark:text-light-text-primary dark:hover:text-black">Skills</a>
-      <a href="#contact" class="text-text-primary hover:text-white opacity-90 hover:opacity-100 transition-all duration-200 dark:text-light-text-primary dark:hover:text-black">Contact</a>
-    </nav>
-    <!-- Dark Mode Toggle -->
-    <button id="theme-toggle" class="p-2 rounded-full text-text-primary hover:bg-card transition-all duration-200 dark:text-light-text-primary dark:hover:bg-light-card">
-      <i id="theme-icon" class="fa-solid fa-sun"></i>
-    </button>
-  </div>
-</header>
-
-<main class="max-w-[1100px] mx-auto px-7 py-7">
-  <!-- Hero Section -->
-  <section class="grid md:grid-cols-2 lg:grid-cols-[1.2fr_.8fr] gap-7 py-7 pb-2">
-    <div>
-      <span class="inline-flex items-center gap-2 border border-border px-3 py-1 rounded-full text-sm bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Ph.D. candidate · INRS & University of Bordeaux</span>
-      <h2 class="merriweather text-3xl sm:text-4xl lg:text-5xl leading-tight my-4">Ultrafast Dynamics · TR‑ARPES · Quantum Materials</h2>
-      <p class="text-muted mb-2 text-base md:text-lg dark:text-light-muted">Experimental physicist specializing in ARPES/XPS‑class surface‑sensitive characterization under UHV/cryogenic conditions. Designing and operating advanced pump–probe experiments; analyzing large datasets in Python/MATLAB/Igor. Current work: defect/contamination–driven ultrafast phenomena in 2D semiconductors.</p>
-      <div class="flex gap-3 flex-wrap mt-5">
-        <a class="px-4 py-2 rounded-xl text-white font-semibold bg-gradient-to-br from-accent to-accent-2 hover:brightness-110 transition-all duration-200 dark:from-light-accent dark:to-light-accent-2" href="CV/AJabed_CV_Postdoc.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
-        <a class="px-4 py-2 rounded-xl text-text-primary font-semibold border border-border bg-card hover:brightness-110 transition-all duration-200 dark:text-light-text-primary dark:border-light-border dark:bg-light-card" href="#contact">Get in touch</a>
-      </div>
-    </div>
-    <div class="bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-xl dark:bg-light-card dark:border-light-border">
-      <div class="flex flex-wrap gap-2">
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">TR‑ARPES</span>
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">Ultrafast Optics</span>
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">HHG</span>
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">OPA/DFG</span>
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">UHV · Cryo (5 K)</span>
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">Python</span>
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">MATLAB</span>
-        <span class="border border-border px-3 py-1.5 rounded-xl bg-bg-2 text-sm dark:border-light-border dark:bg-light-bg-2">Igor Pro</span>
-      </div>
-      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <strong class="font-semibold">Affiliations</strong>
-          <ul class="list-none m-0 p-0 text-sm">
-            <li class="mt-1">INRS — EMT Centre (Canada)</li>
-            <li class="mt-1">University of Bordeaux — CELIA (France)</li>
-          </ul>
-        </div>
-        <div>
-          <strong class="font-semibold">Focus Areas</strong>
-          <ul class="list-none m-0 p-0 text-sm">
-            <li class="mt-1">Topological insulators ($Bi_2Te_3$)</li>
-            <li class="mt-1">2D TMDCs ($1T-SnS_2$)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">About</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <p>Ph.D. researcher investigating ultrafast carrier dynamics and electronic structure of quantum materials using time‑ and angle‑resolved photoemission spectroscopy (TR‑ARPES). I operate both hemispherical analyzers and momentum microscopes; develop data pipelines; and collaborate across international teams on Floquet–Blooch engineering, CDW dynamics, and superconductivity.</p>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Education</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div class="bg-card border border-border rounded-xl p-4 overflow-x-auto dark:bg-light-card dark:border-light-border">
-      <table class="w-full text-left table-auto border-collapse">
-        <thead>
-          <tr class="text-sm text-muted dark:text-light-muted">
-            <th class="p-2 border-b border-border dark:border-light-border">Degree</th>
-            <th class="p-2 border-b border-border dark:border-light-border">Institution</th>
-            <th class="p-2 border-b border-border dark:border-light-border">Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="p-2">Ph.D. in Energy & Materials Science</td>
-            <td class="p-2">INRS, Canada & University of Bordeaux, France</td>
-            <td class="p-2">2026 (expected)</td>
-          </tr>
-          <tr>
-            <td class="p-2">M.Tech. in Applied Optics</td>
-            <td class="p-2">Indian Institute of Technology Delhi, India</td>
-            <td class="p-2">2022</td>
-          </tr>
-          <tr>
-            <td class="p-2">M.Sc. in Physics</td>
-            <td class="p-2">Presidency University, Kolkata, India</td>
-            <td class="p-2">2019</td>
-          </tr>
-          <tr>
-            <td class="p-2">B.Sc. in Physics</td>
-            <td class="p-2">University of Kalyani, India</td>
-            <td class="p-2">2017</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Research Section -->
-  <section id="research" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Research Experience</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div class="relative timeline">
-      <div class="relative pl-8 mb-4">
-        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
-        <h3 class="text-lg font-semibold mb-0">Ph.D. Researcher — INRS (Canada) / University of Bordeaux (France) <span class="text-muted text-sm ml-2 dark:text-light-muted">Feb 2023 — Present</span></h3>
-        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
-          <li><strong>Control of intervalley scattering in $Bi_2Te_3$ via temperature‑dependent band renormalization:</strong> We demonstrate that electron-phonon-mediated intervalley scattering plays a pivotal role in determining its electron dynamics and is highly sensitive to subtle variations in the bulk band dispersion.</li>
-          <li><strong>Role of defect states in semiconducting $1T-SnS_2$:</strong> We provide fundamental insights into how in-gap states influence the optical properties and ultrafast carrier dynamics of $1T-SnS_2$ based on advanced TR-ARPES measurements.</li>
-          <li><strong>Floquet-Bloch Engineering in 2D Materials:</strong> Investigating the transient generation of Floquet-Bloch states in $Bi_2Te_3$ via MIR pump pulses and their momentum warping implications.</li>
-          <li><strong>Charge-density-wave fluctuations in $TiSe_2$:</strong> Probing the dynamics of charge density waves to understand their effect on electronic properties.</li>
-          <li><strong>Unconventional marriage between high-temperature superconductivity and pseudogap in cuprates:</strong> Investigating hybridization between the main anti-bonding band and its first-order superstructure replica.</li>
-        </ul>
-      </div>
-      <div class="relative pl-8 mb-4">
-        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
-        <h3 class="text-lg font-semibold mb-0">M.Tech Thesis — IIT Delhi <span class="text-muted text-sm ml-2 dark:text-light-muted">Aug 2021 — Jun 2022</span></h3>
-        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
-          <li><strong>Second Harmonic Generation from Artificial Atoms and Lattices:</strong> Investigated nonlinear optical phenomena in artificial lattices using femtosecond lasers. Conducted simulations with Lumerical and COMSOL; developed metamaterial using sputtering and electron beam lithography techniques.</li>
-        </ul>
-      </div>
-      <div class="relative pl-8 mb-4">
-        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
-        <h3 class="text-lg font-semibold mb-0">M.Sc Thesis — Presidency University, Kolkata <span class="text-muted text-sm ml-2 dark:text-light-muted">Aug 2018 — Aug 2019</span></h3>
-        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
-          <li><strong>Study The Physics of Blazar Using Optical and Gamma ray Outbursts:</strong> Analyzed and modeled outburst characteristics and radiation mechanisms in blazars using C, Gnuplot, and Qtiplot.</li>
-        </ul>
-      </div>
-      <div class="relative pl-8 mb-4">
-        <div class="absolute left-0 top-1.5 w-4 h-4 rounded-md bg-accent-2 transform -translate-x-1/2"></div>
-        <h3 class="text-lg font-semibold mb-0">Minor Projects <span class="text-muted text-sm ml-2 dark:text-light-muted">IIT Delhi (2021) & Presidency University (2019)</span></h3>
-        <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
-          <li>Fabry Perot Interferometer design with Zemax OpticStudio.</li>
-          <li>A Stable Dual Wavelength Thulium Doped Fiber Laser at 1.9 mm using Photonic Crystal Fiber.</li>
-          <li>Attosecond Pulse Generation via High Harmonic Generation Process.</li>
-          <li>Many Electron Zeeman and Stark effect.</li>
-          <li>Characterizing Radio Antennae.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Publications Section -->
-  <section id="publications" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Publications & Preprints</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div id="pubs"></div>
-  </section>
-
-  <!-- Talks & Conferences Section -->
-  <section id="talks" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Talks & Conferences</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="text-base font-semibold mb-1">GDR UP</h3>
-        <div class="text-muted text-sm dark:text-light-muted">Paris · Mar 2025</div>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="text-base font-semibold mb-1">LIGHT S&T</h3>
-        <div class="text-muted text-sm dark:text-light-muted">Bordeaux · 2025</div>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="text-base font-semibold mb-1">GPR LIGHT Thrust 1</h3>
-        <div class="text-muted text-sm dark:text-light-muted">Bordeaux · Dec 2024</div>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="text-base font-semibold mb-1">ESD7</h3>
-        <div class="text-muted text-sm dark:text-light-muted">Paris · Nov 2024</div>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="text-base font-semibold mb-1">Montréal Photonics</h3>
-        <div class="text-muted text-sm dark:text-light-muted">Canada · Nov 2023</div>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="text-base font-semibold mb-1">ALLS Workshop</h3>
-        <div class="text-muted text-sm dark:text-light-muted">Canada · Sep 2023</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Technical Skills</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-2">Characterization</h3>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">TR/Polarization‑resolved ARPES</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">XPS</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">AFM</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Raman</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">UV–Vis–NIR</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">SEM/TEM</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">PL</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Ellipsometry</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">FTIR</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">XRD</div>
-        </div>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-2">Surface/Vacuum & Optics</h3>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">UHV 10⁻¹¹ mbar</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">In‑situ cleaving</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Ar‑ion sputtering</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Cryostats (5 K)</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Femtosecond lasers</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">HHG (XUV)</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">OPA/DFG (MIR)</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Nonlinear optics</div>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-2">Data & Simulation</h3>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Igor Pro</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">MATLAB</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Python</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">C</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Ansys Lumerical</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Comsol</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Gnuplot</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Qtiplot</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Zemax OpticStudio</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">LaTeX</div>
-        </div>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-2">Interpersonal & Research</h3>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Scientific Writing</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">DOE & SOPs</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Problem-solving</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Critical Thinking</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">International Collaboration</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Oral Presentations</div>
-          <div class="inline-block border border-border px-3 py-1 rounded-lg bg-bg-2 dark:border-light-border dark:bg-light-bg-2">Leadership</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Professional Development Section -->
-  <section class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Professional Development</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-      <p class="mb-3"><strong>Workshops:</strong> 1) Electron and Spin Dynamics 7th Workshop (France, 2024) · 2) Advanced Material Characterization Workshop (Canada, 2024) · 3) INUP‑i2i Nanotechnology Program (India, 2022)</p>
-      <p class="text-sm text-muted dark:text-light-muted"><em>Outcome:</em> Theory sessions with related results for ARPES, RIXS, and DFT; theory+demo for XRD, XPS, TEM, SEM, Raman, AFM, UV–Vis–NIR, PL; intro training in sputtering, CVD, lithography, scanning probe, spectroscopy.</p>
-      <p class="mt-3 mb-3"><strong>Summer Projects/Schools:</strong> 1) Femto‑UP (France, 2021) · 2) Photonics Days Jena (Germany, 2021) · 3) THz Antenna with Metamaterial (India, 2021)</p>
-      <p class="text-sm text-muted dark:text-light-muted"><em>Outcome:</em> Short applied sessions in THz generation/detection (THz‑TDS); ultrafast laser applications; Python for data; and current photonics trends.</p>
-    </div>
-  </section>
+<body>
+  <div class="progress-bar"></div>
   
-  <!-- Achievements and Activities Section -->
-  <section id="achievements" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Achievements & Activities</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-2">Awards & Honors</h3>
-        <ul class="list-disc ml-5 text-sm space-y-1">
-          <li>State Eligibility Test 2020 (Qualified among only 7% of 66,000 candidates nationwide)</li>
-          <li>Joint Entrance Screening Test 2020 (Secured qualification in the top 5% of 13,500 nationwide)</li>
-          <li>Graduate Aptitude Test in Engineering 2020 (Qualified within the top 16% of 17,000 candidates nationwide)</li>
-          <li>Swami Vivekananda Merit Cum Means Scholarship (2012-2019)</li>
-          <li>Institute Teaching Assistantship at IIT Delhi</li>
-        </ul>
+  <header id="header">
+    <div class="topbar">
+      <div class="brand" onclick="scrollToTop()">
+        <div class="avatar">AJ</div>
+        <h1>Akib Jabed</h1>
       </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-2">Extracurricular Activities</h3>
-        <ul class="list-disc ml-5 text-sm space-y-1">
-          <li>Developed various websites on Github (laser fluence calculator, autonomous AI agent, etc.)</li>
-          <li>Published technical, scientific, and social commentary articles on Medium.</li>
-          <li>Organized the LIGHT S&T Annual Student Conference (2025) in France.</li>
-          <li>Co-led a student initiative to establish a student canteen at INRS, Canada.</li>
-          <li>Collected funds for COVID-19 relief in India.</li>
-          <li>Organized departmental events and volunteered for school events.</li>
-        </ul>
-      </div>
+      <nav>
+        <a href="#about" onclick="scrollToSection(event, 'about')">About</a>
+        <a href="#research" onclick="scrollToSection(event, 'research')">Research</a>
+        <a href="#publications" onclick="scrollToSection(event, 'publications')">Publications</a>
+        <a href="#talks" onclick="scrollToSection(event, 'talks')">Talks</a>
+        <a href="#awards" onclick="scrollToSection(event, 'awards')">Awards</a>
+        <a href="#skills" onclick="scrollToSection(event, 'skills')">Skills</a>
+        <a href="#contact" onclick="scrollToSection(event, 'contact')">Contact</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- Contact Section -->
-  <section id="contact" class="mt-7">
-    <h2 class="merriweather text-2xl font-semibold mb-3">Contact</h2>
-    <div class="h-0.5 bg-gradient-to-r from-accent to-accent-2 opacity-85 mb-5 rounded-sm dark:from-light-accent dark:to-light-accent-2"></div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-1">Email</h3>
-        <a class="flex items-center gap-2 text-accent hover:underline transition-all duration-200 dark:text-light-accent" href="mailto:jabed.akib.iitd@gmail.com">
-          <i class="fa-solid fa-envelope"></i>
-          jabed.akib.iitd@gmail.com
-        </a>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <span class="pill">Ph.D. candidate · INRS & University of Bordeaux</span>
+        <h2 class="title">Ultrafast Dynamics · TR‑ARPES · Quantum Materials</h2>
+        <p class="subtitle">Experimental physicist specializing in ARPES/XPS‑class surface‑sensitive characterization under UHV/cryogenic conditions. Designing and operating advanced pump–probe experiments; analyzing large datasets in Python/MATLAB/Igor. Current work: defect/contamination–driven ultrafast phenomena in 2D semiconductors.</p>
+        <div class="cta">
+          <a class="btn acc" href="CV/AJabed_CV_Postdoc.pdf" target="_blank" rel="noopener">
+            <span>📄</span> Download CV (PDF)
+          </a>
+          <a class="btn" href="#contact" onclick="scrollToSection(event, 'contact')">
+            <span>💬</span> Get in touch
+          </a>
+        </div>
       </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-1">Phone</h3>
-        <a class="flex items-center gap-2 text-accent hover:underline transition-all duration-200 dark:text-light-accent" href="tel:+33769596085">
-          <i class="fa-solid fa-phone"></i>
-          +33 7 69 59 60 85
-        </a>
+      <div class="panel">
+        <div class="badges">
+          <span class="badge">TR‑ARPES</span>
+          <span class="badge">Ultrafast Optics</span>
+          <span class="badge">HHG</span>
+          <span class="badge">OPA/DFG</span>
+          <span class="badge">UHV · Cryo (5 K)</span>
+          <span class="badge">Python</span>
+          <span class="badge">MATLAB</span>
+          <span class="badge">Igor Pro</span>
+        </div>
+        <div class="two">
+          <div>
+            <strong>🏛️ Affiliations</strong>
+            <ul class="clean">
+              <li>INRS — EMT Centre (Canada)</li>
+              <li>University of Bordeaux — CELIA (France)</li>
+            </ul>
+          </div>
+          <div>
+            <strong>🔬 Focus Areas</strong>
+            <ul class="clean">
+              <li>Topological insulators (Bi₂Te₃)</li>
+              <li>2D TMDCs (1T‑SnS₂)</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="bg-card border border-border rounded-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer dark:bg-light-card dark:border-light-border">
-        <h3 class="font-semibold text-lg mb-1">LinkedIn</h3>
-        <a class="flex items-center gap-2 text-accent hover:underline transition-all duration-200 dark:text-light-accent" target="_blank" rel="noopener" href="https://www.linkedin.com/in/akib-jabed-physics">
-          <i class="fa-brands fa-linkedin"></i>
-          linkedin.com/in/akib-jabed-physics
-        </a>
+    </section>
+
+    <section id="about">
+      <h2 class="section">About</h2>
+      <div class="rule"></div>
+      <div class="card">
+        <p>Ph.D. researcher investigating ultrafast carrier dynamics and electronic structure of quantum materials using time‑ and angle‑resolved photoemission spectroscopy (TR‑ARPES). I operate both hemispherical analyzers and momentum microscopes; develop data pipelines; and collaborate across international teams on Floquet–Bloch engineering, CDW dynamics, and superconductivity.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p class="mt-10 text-center text-sm text-muted dark:text-light-muted">
-      &copy; <span id="y"></span> · Designed by Akib Jabed · Colors: #0e6e55 & #a16f0b
-    </p>
-  </footer>
-</main>
+    <section id="research">
+      <h2 class="section">Research Experience</h2>
+      <div class="rule"></div>
+      <div class="timeline">
+        <div class="t-item">
+          <h3>Ph.D. Researcher — INRS (Canada) / University of Bordeaux (France) <span class="meta">Feb 2023 — Present</span></h3>
+          <ul class="clean">
+            <li><strong>Control of intervalley scattering in $Bi_2Te_3$:</strong> We demonstrate that electron‑phonon‑mediated intervalley scattering plays a pivotal role in determining its electron dynamics and that these ultrafast scattering processes are highly sensitive to subtle variations in the bulk band dispersion.</li>
+            <li><strong>Role of defect states in semiconducting $1T-SnS_2$:</strong> We provide fundamental insights into how in‑gap states influence the optical properties and ultrafast carrier dynamics, based on advanced TR‑ARPES measurements.</li>
+            <li><strong>Floquet‑Bloch Engineering in 2D Materials:</strong> Investigating the transient generation of Floquet‑Bloch states via MIR pump pulses.</li>
+            <li><strong>Charge‑density‑wave fluctuations in $TiSe_2$:</strong> Probed the dynamics of charge density waves to understand their effect on electronic properties.</li>
+          </ul>
+        </div>
+        <div class="t-item">
+          <h3>M.Tech Thesis — Indian Institute of Technology Delhi <span class="meta">Aug 2021 — Jun 2022</span></h3>
+          <ul class="clean">
+            <li><strong>Second Harmonic Generation from Artificial Atoms:</strong> Investigated nonlinear optical phenomena using femtosecond lasers and conducted simulations with Ansys Lumerical and COMSOL.</li>
+          </ul>
+        </div>
+        <div class="t-item">
+          <h3>M.Sc Thesis — Presidency University, Kolkata <span class="meta">2018 — 2019</span></h3>
+          <ul class="clean">
+            <li><strong>Study The Physics of Blazar:</strong> Analyzed and modeled outburst characteristics and radiation mechanisms in blazars.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<script>
-  // Get the element to display the current year
-  document.getElementById('y').textContent = new Date().getFullYear();
+    <section id="publications">
+      <h2 class="section">Publications & Preprints</h2>
+      <div class="rule"></div>
+      <div id="pubs"></div>
+    </section>
 
-  // Publications (editable JSON)
-  const publications = [
-    {
-      title: 'Control of intervalley scattering in $Bi_2Te_3$ via temperature-dependent band renormalization',
-      role: 'Submitted (first‑author) — npj Quantum Materials',
-      link: 'https://arxiv.org/abs/2506.03251'
-    },
-    {
-      title: 'Electron-phonon-dominated charge-density-wave fluctuations in $TiSe_2$ accessed by ultrafast nonequilibrium dynamics',
-      role: 'Submitted (co‑author) — Nature Communications',
-      link: 'https://arxiv.org/abs/2507.12430'
+    <section id="talks">
+      <h2 class="section">Talks & Conferences</h2>
+      <div class="rule"></div>
+      <div class="cards" id="talks-container"></div>
+    </section>
+
+    <section id="awards">
+      <h2 class="section">Awards & Activities</h2>
+      <div class="rule"></div>
+      <div class="cards">
+        <div class="card">
+          <h3>🏆 Awards and Honors</h3>
+          <ul class="clean">
+            <li>State Eligibility Test 2020 (Top 7% of 66,000 candidates).</li>
+            <li>Joint Entrance Screening Test 2020 (Top 5% of 13,500 candidates).</li>
+            <li>Graduate Aptitude Test in Engineering 2020 (Top 16% of 17,000 candidates).</li>
+            <li>Swami Vivekananda Merit Cum Means Scholarship (2012‑2019).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🌟 Extracurricular Activities</h3>
+          <ul class="clean">
+            <li>Developed website on Github for various physics and data science tools.</li>
+            <li>Published technical, scientific, and social articles on Medium.</li>
+            <li>Co‑organized LIGHT S&T Annual Student Conference (2025), attended by 150+ researchers.</li>
+            <li>Co‑led a student initiative to establish a student canteen at INRS, Canada.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section">Technical Skills</h2>
+      <div class="rule"></div>
+      <div class="two">
+        <div class="card">
+          <h3>🔬 Characterization</h3>
+          <div class="chip">TR/Polarization‑resolved ARPES</div>
+          <div class="chip">XPS</div>
+          <div class="chip">AFM</div>
+          <div class="chip">Raman</div>
+          <div class="chip">UV–Vis–NIR</div>
+          <div class="chip">SEM/TEM</div>
+          <div class="chip">PL</div>
+          <div class="chip">Ellipsometry</div>
+          <div class="chip">FTIR</div>
+          <div class="chip">XRD</div>
+        </div>
+        <div class="card">
+          <h3>⚗️ Surface/Vacuum & Optics</h3>
+          <div class="chip">UHV 10⁻¹¹ mbar</div>
+          <div class="chip">In‑situ cleaving</div>
+          <div class="chip">Ar‑ion sputtering</div>
+          <div class="chip">Cryostats (5 K)</div>
+          <div class="chip">Femtosecond lasers</div>
+          <div class="chip">HHG (XUV)</div>
+          <div class="chip">OPA/DFG (MIR)</div>
+          <div class="chip">Nonlinear optics</div>
+        </div>
+      </div>
+      <div class="two" style="margin-top:20px">
+        <div class="card">
+          <h3>💻 Data & Simulation</h3>
+          <div class="chip">Python</div>
+          <div class="chip">MATLAB</div>
+          <div class="chip">Igor Pro</div>
+          <div class="chip">C</div>
+          <div class="chip">COMSOL</div>
+          <div class="chip">Lumerical</div>
+        </div>
+        <div class="card">
+          <h3>🗣️ Communication</h3>
+          <div class="chip">DOE & SOPs</div>
+          <div class="chip">Scientific writing</div>
+          <div class="chip">Proposals</div>
+          <div class="chip">Talks & Posters</div>
+          <div class="chip">Collaboration & Leadership</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section">Contact</h2>
+      <div class="rule"></div>
+      <div class="cards contact">
+        <div class="card">
+          <h3>📧 Email</h3>
+          <a href="mailto:jabed.akib.iitd@gmail.com">jabed.akib.iitd@gmail.com</a>
+        </div>
+        <div class="card">
+          <h3>📱 Phone</h3>
+          <a href="tel:+33769596085">+33 7 69 59 60 85</a>
+        </div>
+        <div class="card">
+          <h3>💼 LinkedIn</h3>
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/akib-jabed-physics">linkedin.com/in/akib-jabed-physics</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="y"></span> · Crafted with ⚡ by Akib Jabed</p>
+      <p>Colors inspired by quantum materials: <span style="color: var(--accent)">#0d8b6b</span> & <span style="color: var(--accent-2)">#b8860b</span></p>
+    </footer>
+  </main>
+
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    ↑
+  </button>
+
+  <script>
+    // Year for footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Publications (editable JSON)
+    const publications = [
+      {
+        title: 'Control of intervalley scattering in Bi₂Te₃ via temperature‑dependent band renormalization',
+        role: 'Submitted (first‑author) — npj Quantum Materials',
+        link: 'https://arxiv.org/abs/2506.03251'
+      },
+      {
+        title: 'Electron–phonon‑dominated CDW fluctuations in TiSe₂ from ultrafast nonequilibrium dynamics',
+        role: 'Submitted (co‑author) — Nature Communications',
+        link: 'https://arxiv.org/abs/2507.12430'
+      },
+      {
+        title: 'A stable dual‑wavelength thulium doped fiber laser',
+        role: 'Journal of Applied Physics',
+        link: 'https://example.com/paper/a-stable-dual-wavelength-thulium-doped-fiber-laser'
+      }
+    ];
+
+    const talks = [
+      { title: 'GDR UP', meta: 'Paris · 2025' },
+      { title: 'LIGHT S&T', meta: 'Bordeaux · 2025' },
+      { title: 'GPR LIGHT Thrust 1', meta: 'Bordeaux · 2024' },
+      { title: 'ESD7', meta: 'Paris · 2024' },
+      { title: 'Montréal Photonics', meta: 'Canada · 2023' },
+      { title: 'ALLS Workshop', meta: 'Canada · 2023' },
+      { title: 'Photonics Days Jena', meta: 'Germany · 2021' }
+    ];
+
+    // Dynamically generate publications
+    const pubMount = document.getElementById('pubs');
+    publications.forEach(p => {
+      const el = document.createElement('div');
+      el.className = 'pub';
+      el.innerHTML = `<a href="${p.link}" target="_blank" rel="noopener">${p.title}</a><div class="meta">${p.role}</div>`;
+      pubMount.appendChild(el);
+    });
+
+    // Dynamically generate talks
+    const talksMount = document.getElementById('talks-container');
+    talks.forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'card';
+      el.innerHTML = `<h3>🎤 ${t.title}</h3><div class="meta">${t.meta}</div>`;
+      talksMount.appendChild(el);
+    });
+
+    // Smooth scrolling and navigation highlighting
+    function scrollToSection(e, sectionId) {
+      e.preventDefault();
+      const section = document.getElementById(sectionId);
+      const headerHeight = document.getElementById('header').offsetHeight;
+      const targetPosition = section.offsetTop - headerHeight - 20;
+      
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      
+      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+      e.target.classList.add('active');
     }
-  ];
 
-  // Dynamically create and append publication elements
-  const mount = document.getElementById('pubs');
-  publications.forEach(p => {
-    const el = document.createElement('div');
-    el.className = 'py-2 transition-all duration-300 hover:scale-[1.01]';
-    el.innerHTML = `
-      <a href="${p.link}" target="_blank" rel="noopener" class="block font-semibold text-accent hover:underline transition-all duration-200 dark:text-light-accent">${p.title}</a>
-      <div class="text-muted text-sm dark:text-light-muted">${p.role}</div>
-    `;
-    mount.appendChild(el);
-  });
-
-  // Dark/Light Mode Toggle functionality
-  const themeToggle = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-
-  themeToggle.addEventListener('click', () => {
-    // Toggle the 'dark' class on the root HTML element
-    htmlElement.classList.toggle('dark');
-
-    // Update the icon based on the new class state
-    const isDarkMode = htmlElement.classList.contains('dark');
-    const icon = themeToggle.querySelector('i');
-    if (isDarkMode) {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    } else {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
     }
-  });
 
-  // Set the initial icon state on page load
-  const initialIsDarkMode = htmlElement.classList.contains('dark');
-  const initialIcon = themeToggle.querySelector('i');
-  if (initialIsDarkMode) {
-    initialIcon.classList.remove('fa-sun');
-    initialIcon.classList.add('fa-moon');
-  } else {
-    initialIcon.classList.remove('fa-moon');
-    initialIcon.classList.add('fa-sun');
-  }
-</script>
+    // Progress bar
+    function updateProgressBar() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+    }
+
+    // Back to top button visibility
+    function toggleBackToTop() {
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }
+
+    // Header glow effect
+    function updateHeaderGlow() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 100) {
+        header.classList.add('header-glow');
+      } else {
+        header.classList.remove('header-glow');
+      }
+    }
+
+    // Intersection Observer for section animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Navigation highlighting based on scroll position
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a');
+      const headerHeight = document.getElementById('header').offsetHeight;
+      
+      let currentSection = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - headerHeight - 50;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Scroll event listeners
+    let ticking = false;
+    
+    function updateOnScroll() {
+      updateProgressBar();
+      toggleBackToTop();
+      updateHeaderGlow();
+      updateActiveNavLink();
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateOnScroll);
+        ticking = true;
+      }
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProgressBar();
+      toggleBackToTop();
+      updateHeaderGlow();
+      updateActiveNavLink();
+      
+      // Add stagger animation to cards
+      const cards = document.querySelectorAll('.card, .t-item, .chip, .badge');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Home') {
+        e.preventDefault();
+        scrollToTop();
+      }
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
 </body>
 </html>
